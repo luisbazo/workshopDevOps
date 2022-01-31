@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hello-limit
+  name: hello-limit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-limit
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello-limit
+    spec:
+      containers:
+      - image: default-route-openshift-image-registry.pot-openshift-ae2e7543bb78a412465e85ed853e258c-0000.eu-de.containers.appdomain.cloud/nsX/hellonode:v1.0
+        name: hellonode
+        resources: {}
+status: {}

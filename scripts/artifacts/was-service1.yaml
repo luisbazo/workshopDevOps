@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: websphere-liberty-service1
+  namespace: nsX
+spec:
+  selector:
+    app: websphere-liberty-app
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 9080
+      targetPort: 9080
+

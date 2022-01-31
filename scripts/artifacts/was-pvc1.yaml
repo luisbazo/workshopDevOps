@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: was-volume1
+  namespace: nsX
+  labels:
+    region: eu-de
+    zone: fra04
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Mi
+  storageClassName: ibmc-file-bronze

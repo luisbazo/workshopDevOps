@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: websphere-liberty-app
+  namespace: nsX
+spec:
+  selector:
+    matchLabels:
+      app: websphere-liberty-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: websphere-liberty-app
+    spec:
+      containers:
+        - name: websphere-liberty-app
+          image: default-route-openshift-image-registry.pot-openshift-ae2e7543bb78a412465e85ed853e258c-0000.eu-de.containers.appdomain.cloud/nsX/hellok8s:1.0
+          ports:
+            - containerPort: 9080
+      imagePullSecrets:
+        - name: exposed-openshift-registry

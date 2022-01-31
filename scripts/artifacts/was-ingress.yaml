@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: websphere-liberty-ingress
+  namespace: nsX
+spec:
+  rules:
+    - host: websphere-liberty-app-nsX.pot-openshift-ae2e7543bb78a412465e85ed853e258c-0000.eu-de.containers.appdomain.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Exact
+            backend:
+              service:
+                name: websphere-liberty-service1
+                port: 
+                  number: 9080

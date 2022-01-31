@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: websphere-liberty-app
+  namespace: nsX
+spec:
+  selector:
+    matchLabels:
+      app: websphere-liberty-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: websphere-liberty-app
+    spec:
+      containers:
+        - name: websphere-liberty-app
+          image: websphere-liberty:19.0.0.9-webProfile8-java11
+          ports:
+            - containerPort: 9080
+          volumeMounts:
+          - mountPath: "/logs"
+            name: was-persistence
+      volumes:
+        - name: was-persistence
+          persistentVolumeClaim:
+            claimName: was-volume1
+      initContainers:
+      - name: permissionsfix
+        image: alpine:latest
+        command: ["/bin/sh", "-c"]
+        args:
+          - chown 1001:0 /prueba;
+        volumeMounts:
+        - name: was-persistence
+          mountPath: /prueba
+
