@@ -20,15 +20,15 @@ for (( c=1; c<=USER_COUNT; c++ )); do
   printf -v id "%02g" ${c}
   # create username and password for each user
   echo "${USER_PREFIX}${id}:${HTPASSWD_HASH}" >> ${HTPASSWD_FILENAME}
-  for e in dev qa staging production; do
+  for e in qa staging production; do
   # create a new namespace for each user and env
   oc new-project ${PROJECT_PREFIX}${id}-${e} || true
   oc adm policy add-cluster-role-to-group system:image-puller "system:serviceaccounts:${PROJECT_PREFIX}${id}-${e}"
   # make user admin of the new project
   oc policy add-role-to-user admin ${USER_PREFIX}${id} -n ${PROJECT_PREFIX}${id}-${e}
-  # give special priviledges to pods
-  oc adm policy add-scc-to-user privileged -z pipeline -n ${PROJECT_PREFIX}${id}-${e}
   done
+  oc sync ${PROJECT_PREFIX}${id}-dev
+  oc adm policy add-scc-to-user privileged -z pipeline -n ${PROJECT_PREFIX}${id}-dev
 done
 
 # userdemo 
@@ -41,8 +41,6 @@ oc new-project ${PROJECT_PREFIX}demo-${e} || true
 oc adm policy add-cluster-role-to-group system:image-puller "system:serviceaccounts:${PROJECT_PREFIX}demo-${e}"
 # make user admin of the new project
 oc policy add-role-to-user admin ${USER_DEMO} -n ${PROJECT_PREFIX}demo-${e}
-# give special priviledges to pods
-oc adm policy add-scc-to-user privileged -z pipeline -n ${PROJECT_PREFIX}demo-${e}
 done
 
 
