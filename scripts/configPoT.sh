@@ -124,7 +124,7 @@ while read line; do
    cp ./artifacts/javaee/HelloK8s.war /home/user$i
    chown user$i:user$i /home/user$i/HelloK8s.war
    
-   for e in qa staging production; do
+   for e in dev qa staging production; do
    # create a new namespace for each user and env
       # make user admin of the new project
       oc policy add-role-to-user admin IAM#${line} -n project${i}-${e} 
