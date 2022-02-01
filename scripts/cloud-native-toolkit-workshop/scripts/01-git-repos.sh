@@ -32,7 +32,7 @@ GIT_REPOS="https://github.com/IBM/template-go-gin,app \
            https://github.com/cloud-native-toolkit/inventory-management-svc-solution,inventory-management-svc-solution \
            https://github.com/cloud-native-toolkit/inventory-management-bff-solution,inventory-management-bff-solution \
            https://github.com/cloud-native-toolkit/inventory-management-ui-solution,inventory-management-ui-solution \
-           #https://github.com/ibm-cloud-architecture/appmod-liberty-toolkit,appmod-liberty-toolkit \
+           https://github.com/ibm-cloud-architecture/appmod-liberty-toolkit,appmod-liberty-toolkit \
            https://github.com/IBM/MAX-Object-Detector,ai-model-object-detector"
 
 
@@ -112,6 +112,11 @@ for k in ${GIT_REPOS}; do
 IFS=","
 set $k
 echo "snapshot git repo $1 into $2"
+
+if [[ "${2}" == "appmod-liberty-toolkit" ]]; then
+  echo "Skipping git repo $1 into $2 to be loaded into GITOPS"
+  continue
+fi
 
   cat >> "${i}/values.yaml" <<EOF
     - targetRevision: master
