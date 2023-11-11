@@ -27,7 +27,7 @@ for (( c=1; c<=USER_COUNT; c++ )); do
   # make user admin of the new project
   oc policy add-role-to-user admin ${USER_PREFIX}${id} -n ${PROJECT_PREFIX}${id}-${e}
   done
-  oc sync ${PROJECT_PREFIX}${id}-dev
+  oc sync ${PROJECT_PREFIX}${id}-dev || true
   oc adm policy add-scc-to-user privileged -z pipeline -n ${PROJECT_PREFIX}${id}-dev
 done
 
