@@ -41,7 +41,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
   sed -i "s~${1}~${GIT_URL}/${GIT_USER}/${2}~" links.json
 fi
-
+echo "${GIT_URL}/${GIT_USER}/${2} >> links.json
 unset IFS
 done
 
