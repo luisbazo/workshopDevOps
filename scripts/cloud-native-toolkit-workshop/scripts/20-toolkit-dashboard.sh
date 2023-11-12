@@ -30,18 +30,18 @@ TMP_DIR=$(mktemp -d)
 pushd "${TMP_DIR}"
 
 # Download json
-curl -sL -o links.json ${ORGINAL_JSON_URL}
+#curl -sL -o links.json ${ORGINAL_JSON_URL}
 
 for i in ${GIT_REPOS}; do
 IFS=","
 set $i
 echo $1 $2
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  sed -i .bak "s~${1}~${GIT_URL}/${GIT_USER}/${2}~" links.json
-else
-  sed -i "s~${1}~${GIT_URL}/${GIT_USER}/${2}~" links.json
-fi
-echo "${GIT_URL}/${GIT_USER}/${2} >> links.json
+#if [[ "$OSTYPE" == "darwin"* ]]; then
+#  sed -i .bak "s~${1}~${GIT_URL}/${GIT_USER}/${2}~" links.json
+#else
+#  sed -i "s~${1}~${GIT_URL}/${GIT_USER}/${2}~" links.json
+#fi
+echo "${GIT_URL}/${GIT_USER}/${2}" >> links.json
 unset IFS
 done
 
