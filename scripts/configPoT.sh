@@ -131,9 +131,9 @@ while read line; do
    done
 
    #Add users to the admin groups of devtoolkit needed
-   for group in argocd-admins; do
-      oc adm groups add-users ${group} IAM#${line}
-   done
+   #for group in argocd-admins; do
+   #   oc adm groups add-users ${group} IAM#${line}
+   #done
 
    i=$(($i+1))
    echo $i

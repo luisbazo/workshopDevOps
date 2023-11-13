@@ -5,7 +5,7 @@ metadata:
   namespace: nsX
 spec:
   rules:
-    - host: websphere-liberty-app-nsX.pot-openshift-ae2e7543bb78a412465e85ed853e258c-0000.eu-de.containers.appdomain.cloud
+    - host: websphere-liberty-app-nsX.pot-devops-ae2e7543bb78a412465e85ed853e258c-0000.eu-de.containers.appdomain.cloud
       http:
         paths:
           - path: /
