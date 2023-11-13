@@ -80,14 +80,14 @@ while read line; do
    # needed to give root rights to docker images
    oc adm policy add-scc-to-user anyuid -z default -n ns$i
    
-   for e in dev qa staging production; do
+   for e in dev sta prod; do
    # create a new namespace for each user and env
    # make user admin of the new project
-      oc policy add-role-to-user admin IAM#${line} -n project${i}-${e}
+      oc policy add-role-to-user admin IAM#${line} -n ${e}
    done
 
    #Add users to the admin groups of devtoolkit needed
-   for group in ibm-toolkit-users argocd-admins; do
+   for group in argocd-admins; do
       oc adm groups add-users ${group} IAM#${line}
    done
     
