@@ -5,7 +5,7 @@ metadata:
   namespace: nsX
 spec:
   rules:
-    - host: node-app-nsX.pot-devops-ae2e7543bb78a412465e85ed853e258c-0000.eu-de.containers.appdomain.cloud
+    - host: node-app-nsX.at-pot-b3f0fc3fa0c3a208d8bb1467220af510-0000.eu-de.containers.appdomain.cloud
       http:
         paths:
           - path: /

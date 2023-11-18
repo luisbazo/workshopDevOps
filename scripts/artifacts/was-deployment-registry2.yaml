@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: websphere-liberty-app
-          image: default-route-openshift-image-registry.pot-devops-ae2e7543bb78a412465e85ed853e258c-0000.eu-de.containers.appdomain.cloud/nsX/hellok8s:1.0
+          image: default-route-openshift-image-registry.at-pot-b3f0fc3fa0c3a208d8bb1467220af510-0000.eu-de.containers.appdomain.cloud/nsX/hellok8s:1.0
           ports:
             - containerPort: 9080
       imagePullSecrets:
